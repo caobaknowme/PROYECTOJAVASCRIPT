@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/estilosIndex.css">
+    
+</head>
+
+<body>
+    
+    <!--Nav-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">NombreApp</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Inicio
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contactenos</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <h6 id="Usuario" class="text-light m-2"></h6>
+                        <button id="Registro" class="btn btn-success my-sm-0" data-bs-toggle="modal" data-bs-target="#modalRegistro" type="button">Registrarse</button>
+                        <button id="InicioSesion" class="btn btn-success ms-2" data-bs-toggle="modal" data-bs-target="#modalInicioSesion" type="button">Iniciar Sesión</button>
+                        <button id="CerrarSesion" class="btn btn-success" type="button" style="display: none;">Cerrar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--Registrarse-->
+    <div id="modalRegistro" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrarse</h5>
+                    <button id="cerrarModal" type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleInputNombre1" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="txtNombre" placeholder="Nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Correo" required>
+                            <div id="emailHelp" class="form-text">No comparta este correo con nadie.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="txtPassword" placeholder="Contraseña" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="aceptarModalRegistro" type="submit" class="btn btn-primary">Registrarse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Iniciar Session-->
+    <div id="modalInicioSesion" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Inicio de Sesión</h5>
+                    <button id="cerrarModal1" type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form id="frm1">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="txtEmail1" aria-describedby="emailHelp"
+                                required>
+                            <div id="emailHelp" class="form-text">No comparta este correo con nadie.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="txtPassword1" required>
+                        </div>
+                            <button id="aceptarModalInicioSesion" type="submit" class="btn btn-primary w-100 mb-2">Iniciar Sesión</button>
+                            <button type="submit" class="btn btn-danger w-100" id="googleLogin">Iniciar Sesión con Google</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Ver ID Incidencia, Editar, Eliminar-->
+    <div id="modalVerIncidencia" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Incidencia</h5>
+                    <button id="cerrarModal1" type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">ID Incidencia:</label>
+                            <p id="txtIdVer"></p>
+                            <input type="text" class="form-control" style="display: none;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Asunto:</label>
+                            <p id="txtAsuntoVer"></p>
+                            <input  id="inputAsuntoVer" type="text" class="form-control" style="display: none;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Descripción:</label>
+                            <p id="txtDescripcionVer"></p>
+                            <input type="text" class="form-control" style="display: none;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Notas:</label>
+                            <p id="txtNotasVer"></p>
+                            <input type="text" class="form-control" style="display: none;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Dueño:</label>
+                            <p id="txtOwnerVer"></p>
+                            <input type="text" class="form-control" style="display: none;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Creador:</label>
+                            <p id="txtCreadorVer"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Fecha:</label>
+                            <p id="txtFechaVer"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Hora:</label>
+                            <p id="txtHoraVer"></p>
+                        </div>
+                        <button id="EditarIncidencia" class="btn btn-secondary w-100" type="button">Editar Incidencia</button>
+                        <button id="EliminarIncidencia" class="btn btn-danger mt-2 w-100" type="button">Eliminar Incidencia</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="usuarios" style="display: none;">
+            <button type="button" class="btn btn-dark mt-5">Crear Incidencia</button>
+            <table id="tblDatos" class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Asunto</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    
+    
+    <!--Alerts-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <!--JQuery-->
+    <script src="../Js/jquery-3.7.1.min.js"></script>
+    <!--Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+    <script src="../Js/firebase-config.js"></script>
+    <!--Js-->
+    <script src="../Js/index.js"></script>
+</body>
+
+</html>
