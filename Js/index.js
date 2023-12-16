@@ -168,7 +168,7 @@ $(document).ready(()=>{
                     const horasFormato12 = horas % 12 || 12; // Si horas es 0, muestra 12 en lugar de 0
                     const amOpm = horas < 12 ? 'AM' : 'PM';
                     
-                    console.log(doc.id);
+                    //console.log(doc.id);
                     /*Editamos el HTML*/
                     dataTable.innerHTML +=`
                     <tr>
