@@ -1,2 +1,25 @@
 
+.boton {
+    margin-left: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
 
+/* Estilo específico para el botón de Cerrar Sesión */
+#CerrarSesion {
+    display: none;
+}
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .d-flex {
+        flex-direction: column;
+    }
+
+    .boton {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

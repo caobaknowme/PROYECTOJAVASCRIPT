@@ -145,12 +145,12 @@ $(document).ready(()=>{
             $("#Registro").hide();
             $("#CerrarSesion").show();
             $(".Formulario").css("display","none");
-
+            
             /*Coloco el usuario en el Nav-Bar*/
             const docSeleccionado = await findByIdUser(user.uid);
             const contactoSeleciondo = docSeleccionado.data();
             $("#Usuario").html(contactoSeleciondo.nombre);
-
+            $("#Usuario").show();
             /*Muestro el Owner*/
 
             /*Muestro los datos en la tabla*/
