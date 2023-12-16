@@ -48,6 +48,10 @@ $(document).ready(()=>{
         Limpiar();
     });
 
+    $("#buttonHamburgerMenu").click(()=>{
+        $("#navbarSupportedContent").toggle("slow");
+    });
+
     $("#aceptarModalRegistro").click((event)=>{
         event.preventDefault();
         const email = $("#txtEmail").val();
