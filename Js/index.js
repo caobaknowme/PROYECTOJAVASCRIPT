@@ -144,6 +144,7 @@ $(document).ready(()=>{
             $("#InicioSesion").hide();
             $("#Registro").hide();
             $("#CerrarSesion").show();
+            $(".Formulario").css("display","none");
 
             /*Coloco el usuario en el Nav-Bar*/
             const docSeleccionado = await findByIdUser(user.uid);
@@ -213,8 +214,9 @@ $(document).ready(()=>{
             $("#InicioSesion").show();
             $("#Registro").show();
 
-            $(".usuarios").hide("");
-            $("#Usuario").html("");
+            $(".usuarios").hide();
+            $("#Usuario").hide();
+            $(".Formulario").show();
         }
     });
 
