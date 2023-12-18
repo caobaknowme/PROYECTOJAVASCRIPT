@@ -1,25 +1,81 @@
-
-.boton {
-    margin-left: 5px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
+.carousel-inner{
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
-/* Estilo específico para el botón de Cerrar Sesión */
-#CerrarSesion {
-    display: none;
+.infoPicnic{
+    background-color: rgb(252, 158, 230);
+    padding-top: 75px;
+    padding-bottom: 75px;
 }
 
-/* Media query para dispositivos móviles */
-@media only screen and (max-width: 600px) {
-    .d-flex {
-        flex-direction: column;
+.imgArtistas{
+    height: 100%;
+    width: 30vw;
+}
+
+.textImg{
+    margin-top: 30%;
+    text-align: justify;
+}
+
+@media (min-width: 1700px){
+    .textImg{
+        margin-top: 35%;
+    }
+}
+
+@media (max-width: 1700px){
+    .textImg{
+        margin-top: 15%;
+    }
+}
+
+@media (max-width: 1700px){
+    .textImg{
+        margin-top: 28%;
     }
 
-    .boton {
-        display: block;
+    .imgArtistas{
+        height: 100%;
         width: 100%;
-        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 992px){
+    .textImg{
+        margin-top: 25%;
+    }
+
+    .imgArtistas{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 770px){
+    .textImg{
+        margin-top: 15%;
+    }
+
+    .imgArtistas{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px){
+    .imgArtistas{
+        height: 100%;
+        width: 100%;
+    }
+
+    .classicText{
+        text-align: center;
+    }
+
+    .textImg{
+        text-align: center;
+        margin: 0;
     }
 }

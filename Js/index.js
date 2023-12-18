@@ -143,14 +143,22 @@ $(document).ready(()=>{
             /*Oculto los botones y muestro el cerra sesión*/
             $("#InicioSesion").hide();
             $("#Registro").hide();
+            $("#InicioSesion1").hide();
+            $("#Registro1").hide();
             $("#CerrarSesion").show();
             $(".Formulario").css("display","none");
+            $(".infoPicnic").css("display","none");
+            $(".carousel").css("display","none");
             
             /*Coloco el usuario en el Nav-Bar*/
             const docSeleccionado = await findByIdUser(user.uid);
             const contactoSeleciondo = docSeleccionado.data();
             $("#Usuario").html(contactoSeleciondo.nombre);
             $("#Usuario").show();
+            $("#Usuario1").html(contactoSeleciondo.nombre);
+            $("#Usuario1").show();
+            $(".imgGoogle").attr("src",`${user.photoURL}`)
+            $(".imgGoogle1").attr("src",`${user.photoURL}`)
             /*Muestro el Owner*/
 
             /*Muestro los datos en la tabla*/
@@ -213,10 +221,17 @@ $(document).ready(()=>{
             $("#CerrarSesion").hide();
             $("#InicioSesion").show();
             $("#Registro").show();
+            $("#Registro1").show();
+            $("#InicioSesion1").show();
 
             $(".usuarios").hide();
             $("#Usuario").hide();
+            $("#Usuario1").hide();
             $(".Formulario").show();
+            $(".infoPicnic").show();
+            $(".carousel").show();
+            $(".imgGoogle").attr("src","")
+            $(".imgGoogle1").attr("src","")
         }
     });
 

@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/index.css">
 
 </head>
@@ -18,7 +19,7 @@
 
     <!--Nav-->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-ligth bg-ligth">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Picnic Festival</a>
                 <button class="navbar-toggler" id="buttonHamburgerMenu" type="button">
@@ -26,25 +27,52 @@
                 </button>
                 <div class="collapse navbar-collapse form_botones" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
+                        <li>
+                            <img alt="" class="imgGoogle">
+                            <h6 id="Usuario1" class="text-dark Usuario1"></h6>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="../html/index.html">Inicio
+                            <a class="nav-link active mostrarActivo" href="../html/index.html">Inicio
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../html/contacto.html">Contactenos</a>
+                            <a class="nav-link mostrarActivo" href="../html/contacto.html">Contactenos</a>
                         </li>
                     </ul>
-                        <form class="d-flex">
-                            <h6 id="Usuario" class="text-light m-2"></h6>
-                            <button id="CerrarSesion" class="btn btn-success boton" 
-                                    type="button">Cerrar Sesión</button>
-                            <button id="Registro" class="btn btn-success boton" data-bs-toggle="modal"
+                    <form class="d-flex">
+                        <ul class="navbar-nav me-auto">
+                            <li>
+                                <img alt="" class="imgGoogle1">
+                            </li>
+                            <li>
+                                <h6 id="Usuario" class="text-dark Usuario"></h6>
+                            </li>
+                            <li>
+                                <button id="CerrarSesion" class="btn cerrarSession" type="button">Cerrar Sesión</button>
+                            </li>
+                            <li>
+                                <img id="Registro" class="btn imgprincipal" data-bs-toggle="modal"
+                                    data-bs-target="#modalRegistro" type="button"
+                                    src="../img/icons8-añadir-usuario-masculino-64.png" alt="Registrarse">
+                            </li>
+                            <li>
+                                <img id="InicioSesion" class="btn imgprincipal" data-bs-toggle="modal"
+                                    data-bs-target="#modalInicioSesion" type="button"
+                                    src="../img/icons8-persona-de-sexo-masculino-64.png" alt="Iniciar Sesión">
+                            </li>
+                            <li>
+                                <button id="Registro1" class="btn boton mostrarActivo" data-bs-toggle="modal"
                                     data-bs-target="#modalRegistro" type="button">Registrarse</button>
-                            <button id="InicioSesion" class="btn btn-success boton" data-bs-toggle="modal"
+                            </li>
+                            <li>
+                                <button id="InicioSesion1" class="btn boton mostrarActivo" data-bs-toggle="modal"
                                     data-bs-target="#modalInicioSesion" type="button">Iniciar Sesión</button>
-                        </form>
-                    
+                            </li>
+                        </ul>
+
+                    </form>
+
                 </div>
             </div>
         </nav>
@@ -175,6 +203,7 @@
     </div>
 
     <div class="container">
+        <!--Tabla de datos-->
         <div class="usuarios" style="display: none;">
             <button type="button" class="btn btn-dark mt-5">Crear Incidencia</button>
             <table id="tblDatos" class="table table-striped mt-5">
@@ -189,6 +218,89 @@
                 </thead>
                 <tbody></tbody>
             </table>
+        </div>
+
+        <!--Carrosell-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../img/picnic1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/picnic2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/picnic3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!--Información Picnic-->
+    <div class="infoPicnic">
+        <div class="container">
+            <h2 class="classicText">Proximamente 2024</h2>
+            <p class="classicText">Save the date 10 & 17 de Febrero</p>
+
+            <!-- Primera fila -->
+            <div class="row">
+                <div class="col-sm-6 mb-4">
+                    <div class="textImg">
+                        <h3>Wiz Khalifa</h3>
+                        <p>Cuyo nombre real es Cameron Jibril Thomaz, es un rapero, cantante, compositor y actor
+                            estadounidense. Estará en nuestra próxima edición de Picnic 2024</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-4">
+                    <img src="../img/wiz khalifa.jpg" alt="Wiz Khalifa" class="imgArtistas">
+                </div>
+            </div>
+
+            <!-- Segunda fila -->
+            <div class="row">
+                <div class="col-sm-6 mb-4">
+                    <div class="textImg">
+                        <h3>Bizzarap</h3>
+                        <p>Es una artista argentina conocida por su trabajo en la música urbana. 
+                            Estará en nuestra próxima edición de Picnic 2024</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-4">
+                    <img src="../img/Bizzarap.jpg" alt="Bizzarap" class="imgArtistas">
+                </div>
+            </div>
+
+            <!-- Tercera fila -->
+            <div class="row">
+                <div class="col-sm-6 mb-4">
+                    <div class="textImg">
+                        <h3>J Balvin</h3>
+                        <p>Es una artista con premios ganados y nominaciones, como los premios Grammy Latinos y Billboard Music Awards.
+                            Estará en nuestra próxima edición de Picnic 2024</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 mb-4">
+                    <img src="../img/jbalvin.jpg" alt="Jbalvin" class="imgArtistas">
+                </div>
+            </div>
         </div>
     </div>
 

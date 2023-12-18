@@ -32,8 +32,8 @@ input, textarea {
 
 #Formulario{
     margin-top: 50px;
-    color: white;
-    background-color: #212529;
+    color: rgb(0, 0, 0);
+    background-color: rgb(252, 158, 230);
     padding: 30px;
     border-radius: 40px;
     margin-left: auto;
