@@ -1,10 +1,36 @@
 .imgprincipal {
     display: flex;
-    width: 58%;
-    height: auto;
+    align-items: center;
 }
 
-.imgprincipal:hover, .mostrarActivo:hover, #CerrarSesion:hover{
+.loginBotones{
+    display: flex;
+    margin-left: 15px;
+    border-radius: 100px;
+    border: solid black 1px;
+    padding-bottom: 0;
+    margin-top: 2px;
+}
+
+.loginBotones > img{
+    order: -1;
+    width: 25px;
+    height: 25%;
+}
+
+.loginBotones > p{
+    margin-top: 2px;
+    margin-left: 10px;
+    height: 15px;
+}
+
+.loginBotones:hover{
+    background-color: rgb(207, 207, 207);
+    border-radius: 100px;
+    border: solid black 1px;
+}
+
+.mostrarActivo:hover, #CerrarSesion:hover{
     background-color: rgb(207, 207, 207);
 }
 
