@@ -200,7 +200,13 @@ $(document).ready(()=>{
                         const horasFormato12 = horas % 12 || 12; 
                         const amOpm = horas < 12 ? 'AM' : 'PM';
                         const hora = horasFormato12+":"+ contactoSeleciondoTiquete.Fecha.toDate().getMinutes()+" "+amOpm;
-    
+                        
+
+                        $("#txtAsuntoVer").show();
+                        $("#txtDescripcionVer").show();
+                        $("#txtNotasVer").show();
+                        $("#txtOwnerVer").show();
+
                         $("#txtIdVer").html(contactoSeleciondoTiquete.Id);
                         $("#txtAsuntoVer").html(contactoSeleciondoTiquete.Asunto);
                         $("#txtDescripcionVer").html(contactoSeleciondoTiquete.Descripcion);
@@ -211,7 +217,21 @@ $(document).ready(()=>{
                         $("#txtHoraVer").html(hora);
     
                         $("#EditarIncidencia").click(async()=>{
-                        
+                            $("#txtAsuntoVer").hide();
+                            $("#txtDescripcionVer").hide();
+                            $("#txtNotasVer").hide();
+                            $("#txtOwnerVer").hide();
+
+                            $("#inputAsuntoVer").val(contactoSeleciondoTiquete.Asunto);
+                            $("#inputDescripcionVer").val(contactoSeleciondoTiquete.Descripcion);
+                            $("#inputNotasVer").val(contactoSeleciondoTiquete.Notas);
+                            $("#inputOwnerVer").val(contactoSeleciondoTiquete.Owner);
+
+                            $("#inputAsuntoVer").show();
+                            $("#inputDescripcionVer").show();
+                            $("#inputNotasVer").show();
+                            $("#inputOwnerVer").show();
+                            
                         });
                     });
                 });
