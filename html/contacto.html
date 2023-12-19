@@ -38,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link mostrarActivo" href="../html/contacto.html">Contactenos</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link mostrarActivo cerrarS cSession" href="../html/index.html">Cerrar Sesión</a>
+                        </li>
                     </ul>
                     <form class="d-flex">
                         <ul class="navbar-nav me-auto">
@@ -48,18 +51,24 @@
                                 <h6 id="Usuario" class="text-dark Usuario"></h6>
                             </li>
                             <li>
-                                <button id="CerrarSesion" class="btn cerrarSession" type="button">Cerrar Sesión</button>
+                                <div class="imgprincipal">
+                                    <div class="btn cerrarSession cerrarS" type="button">
+                                        <img src="../img/icons8-salir-24.png" alt="Cerrar Sesión">
+                                        <p id="cerrarSession" >Cerrar Sesión</p>
+                                    </div>
+                                </div>
+
                             </li>
                             <li>
                                 <div class="imgprincipal">
                                     <div id="Registro" class="btn loginBotones" data-bs-toggle="modal"
-                                    data-bs-target="#modalRegistro" type="button">
+                                        data-bs-target="#modalRegistro" type="button">
                                         <img src="../img/icons8-añadir-usuario-masculino-64.png" alt="Registrarse">
                                         <p>Registrarse</p>
                                     </div>
-                                    
+
                                     <div id="InicioSesion" class="btn loginBotones" data-bs-toggle="modal"
-                                    data-bs-target="#modalInicioSesion" type="button">
+                                        data-bs-target="#modalInicioSesion" type="button">
                                         <img src="../img/icons8-persona-de-sexo-masculino-64.png" alt="Iniciar Sesión">
                                         <p>Iniciar Sesión</p>
                                     </div>

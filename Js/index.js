@@ -129,7 +129,7 @@ $(document).ready(()=>{
 
     });
 
-    $("#CerrarSesion").click((event)=>{
+    $(".cerrarS").click((event)=>{
         event.preventDefault();
         auth.signOut().then(()=>{
             //console.log("Sign-Out");
@@ -145,10 +145,12 @@ $(document).ready(()=>{
             $("#Registro").hide();
             $("#InicioSesion1").hide();
             $("#Registro1").hide();
-            $("#CerrarSesion").show();
+            $(".cerrarS").show();
             $(".Formulario").css("display","none");
             $(".infoPicnic").css("display","none");
             $(".carousel").css("display","none");
+            $(".otrosArtistas").css("display","none");;
+            $(".footerFinal").css("display","none");
             
             /*Coloco el usuario en el Nav-Bar*/
             const docSeleccionado = await findByIdUser(user.uid);
@@ -218,7 +220,7 @@ $(document).ready(()=>{
             });
         }else{
             //console.log("Sing-Out");
-            $("#CerrarSesion").hide();
+            $(".cerrarS").hide();
             $("#InicioSesion").show();
             $("#Registro").show();
             $("#Registro1").show();
@@ -229,7 +231,9 @@ $(document).ready(()=>{
             $("#Usuario1").hide();
             $(".Formulario").show();
             $(".infoPicnic").show();
+            $(".otrosArtistas").show();
             $(".carousel").show();
+            $(".footerFinal").show();
             $(".imgGoogle").attr("src","")
             $(".imgGoogle1").attr("src","")
         }

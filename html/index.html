@@ -39,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link mostrarActivo" href="../html/contacto.html">Contactenos</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link mostrarActivo cerrarS cSession" href="../html/index.html">Cerrar Sesión</a>
+                        </li>
                     </ul>
                     <form class="d-flex">
                         <ul class="navbar-nav me-auto">
@@ -49,18 +52,24 @@
                                 <h6 id="Usuario" class="text-dark Usuario"></h6>
                             </li>
                             <li>
-                                <button id="CerrarSesion" class="btn cerrarSession" type="button">Cerrar Sesión</button>
+                                <div class="imgprincipal">
+                                    <div class="btn cerrarSession cerrarS" type="button">
+                                        <img src="../img/icons8-salir-24.png" alt="Cerrar Sesión">
+                                        <p id="cerrarSession" >Cerrar Sesión</p>
+                                    </div>
+                                </div>
+
                             </li>
                             <li>
                                 <div class="imgprincipal">
                                     <div id="Registro" class="btn loginBotones" data-bs-toggle="modal"
-                                    data-bs-target="#modalRegistro" type="button">
+                                        data-bs-target="#modalRegistro" type="button">
                                         <img src="../img/icons8-añadir-usuario-masculino-64.png" alt="Registrarse">
                                         <p>Registrarse</p>
                                     </div>
-                                    
+
                                     <div id="InicioSesion" class="btn loginBotones" data-bs-toggle="modal"
-                                    data-bs-target="#modalInicioSesion" type="button">
+                                        data-bs-target="#modalInicioSesion" type="button">
                                         <img src="../img/icons8-persona-de-sexo-masculino-64.png" alt="Iniciar Sesión">
                                         <p>Iniciar Sesión</p>
                                     </div>
@@ -284,7 +293,7 @@
                 <div class="col-sm-6 mb-4">
                     <div class="textImg">
                         <h3>Bizzarap</h3>
-                        <p>Es una artista argentina conocida por su trabajo en la música urbana. 
+                        <p>Es una artista argentina conocida por su trabajo en la música urbana.
                             Estará en nuestra próxima edición de Picnic 2024</p>
                     </div>
                 </div>
@@ -298,7 +307,8 @@
                 <div class="col-sm-6 mb-4">
                     <div class="textImg">
                         <h3>J Balvin</h3>
-                        <p>Es una artista con premios ganados y nominaciones, como los premios Grammy Latinos y Billboard Music Awards.
+                        <p>Es una artista con premios ganados y nominaciones, como los premios Grammy Latinos y
+                            Billboard Music Awards.
                             Estará en nuestra próxima edición de Picnic 2024</p>
                     </div>
                 </div>
@@ -311,7 +321,7 @@
 
     <!--Otros Artistas-->
     <div class="otrosArtistas">
-        <div class="container">
+        <div class="container contenedorImg">
             <div class="textOtrosArtistas">
                 <h1>Nos vemos en Pedregal</h1>
                 <p>No te lo pierdas</p>
@@ -326,17 +336,44 @@
                     <h3>Myke Towers</h3>
                 </div>
                 <div>
-                    <img src="imagen3.jpg" alt="Imagen 3" class="imagenC">
-                    <p>Texto 3</p>
+                    <img src="../img/Residente.jpg" alt="Imagen 3" class="imagenC">
+                    <h3>Residente</h3>
                 </div>
                 <div>
-                    <img src="imagen4.jpg" alt="Imagen 4" class="imagenC">
-                    <p>Texto 4</p>
+                    <img src="../img/Julieta Venegas.jpg" alt="Imagen 4" class="imagenC">
+                    <h3>Julieta Venegas</h3>
                 </div>
             </div>
         </div>
     </div>
 
+    <!--Footer-->
+    <div class="footerFinal">
+        <footer>
+            <div class="column">
+                <h3>Venta de Entradas</h3>
+                <a href="https://www.eticket.cr/masinformacion.aspx?idevento=8403">Eticket</a>
+            </div>
+
+            <div class="column">
+                <h3>Locaciones Disponibles</h3>
+                <p>Picnic Pass</p>
+                <p>General</p>
+            </div>
+
+            <div class="column">
+                <h3>Djs Invitados</h3>
+                <p>Khiriztian GC</p>
+                <p>Diego C</p>
+                <p>INBETWIN</p>
+                <p>Disto</p>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Pinic Festival. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
 
     <!--Alerts-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>

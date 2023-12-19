@@ -30,14 +30,8 @@
     border: solid black 1px;
 }
 
-.mostrarActivo:hover, #CerrarSesion:hover{
+.mostrarActivo:hover{
     background-color: rgb(207, 207, 207);
-}
-
-
-/* Estilo específico para el botón de Cerrar Sesión */
-#CerrarSesion {
-    display: none;
 }
 
 .imgGoogle{
@@ -51,6 +45,36 @@
     margin-right: 10px;
     margin-top: 4px;
 }
+
+
+.cerrarSession {
+    display: flex;
+    margin-left: 15px;
+    border-radius: 100px;
+    border: solid black 1px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0px;
+}
+
+.cerrarSession > img{
+    width: 25px;
+    margin-right: 5px;
+    height: 10%;
+    margin-top: 7px;
+}
+
+.cerrarSession > p{
+    margin-top: 7px;
+    margin-bottom: 8px;
+}
+
+.cerrarSession:hover{
+    background-color: rgb(207, 207, 207);
+    border-radius: 100px;
+    border: solid black 1px;
+}
+
 
 /* Media query para dispositivos móviles */
 @media (max-width: 992px) {
@@ -83,16 +107,6 @@
         border-radius: 100px;
         width: 30px;
     }
-
-    .cerrarSession{
-        text-align: left;
-        width: 100%;
-        padding: 0;
-        border-radius: 0;
-        padding-top: 7px;
-        padding-bottom: 7px;
-        margin-right: 100vw;
-    }
 }
 
 @media (min-width: 992px) {
@@ -110,5 +124,9 @@
 
     .Usuario{
         margin-top: 9px;
+    }
+
+    .cSession{
+        display: none !important;
     }
 }

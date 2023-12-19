@@ -16,13 +16,14 @@
 
 .textOtrosArtistas{
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .imgCantantes{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    gap: 10%;
     text-align: center;
 }
 
@@ -34,6 +35,10 @@
 .textImg{
     margin-top: 30%;
     text-align: justify;
+}
+
+.contenedorImg{
+    margin-bottom: 50px;
 }
 
 @media (min-width: 1700px){
@@ -57,6 +62,13 @@
         height: 100%;
         width: 100%;
     }
+}
+
+@media (max-width: 1399px){
+    .imgCantantes{
+        gap: 40px;
+    }
+
 }
 
 @media (max-width: 992px){
@@ -96,3 +108,29 @@
         margin: 0;
     }
 }
+
+.footerFinal{}
+
+footer {
+    background-color: rgb(252, 158, 230);
+    color: #000000;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    }
+
+.column {
+    flex-basis: 30%;
+    text-align: center;
+    align-items: center;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+.copyright {
+    margin-top: 20px;
+    flex-basis: 100%;
+    text-align: center; /* Alinea el texto a la derecha */
+}
+
