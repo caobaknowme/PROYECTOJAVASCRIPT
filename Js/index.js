@@ -19,6 +19,7 @@ const findByIdUser = paramId => db.collection(collectionStrUsers).doc(paramId).g
 
 const dataTable = document.querySelector("#tblDatos > tbody");
 
+
 function Limpiar(){
     //Limpiar el Modal
     $("#txtEmail").val("");
@@ -192,7 +193,8 @@ $(document).ready(()=>{
 
                     $(".ver-tiquete").click(async(ev)=>{
                         //console.log(ev.target.dataset.id);
-                        const docSeleccionadoTiquete = await findById(ev.target.dataset.id);
+                        const IdSeleccionadoTiquete = ev.target.dataset.id;
+                        const docSeleccionadoTiquete = await findById(IdSeleccionadoTiquete);
                         const contactoSeleciondoTiquete = docSeleccionadoTiquete.data();
                         //console.log(contactoSeleciondoTiquete);
     
@@ -217,21 +219,55 @@ $(document).ready(()=>{
                         $("#txtHoraVer").html(hora);
     
                         $("#EditarIncidencia").click(async()=>{
-                            $("#txtAsuntoVer").hide();
-                            $("#txtDescripcionVer").hide();
-                            $("#txtNotasVer").hide();
-                            $("#txtOwnerVer").hide();
 
-                            $("#inputAsuntoVer").val(contactoSeleciondoTiquete.Asunto);
-                            $("#inputDescripcionVer").val(contactoSeleciondoTiquete.Descripcion);
-                            $("#inputNotasVer").val(contactoSeleciondoTiquete.Notas);
-                            $("#inputOwnerVer").val(contactoSeleciondoTiquete.Owner);
+                            if($("#EditarIncidencia").html()==="Editar Incidencia"){
+                                $("#EditarIncidencia").html("Modificar")
+                                $("#txtAsuntoVer").hide();
+                                $("#txtDescripcionVer").hide();
+                                $("#txtNotasVer").hide();
+                                $("#txtOwnerVer").hide();
 
-                            $("#inputAsuntoVer").show();
-                            $("#inputDescripcionVer").show();
-                            $("#inputNotasVer").show();
-                            $("#inputOwnerVer").show();
-                            
+                                $("#inputAsuntoVer").val(contactoSeleciondoTiquete.Asunto);
+                                $("#inputDescripcionVer").val(contactoSeleciondoTiquete.Descripcion);
+                                $("#inputNotasVer").val(contactoSeleciondoTiquete.Notas);
+                                $("#inputOwnerVer").val(contactoSeleciondoTiquete.Owner);
+
+                                $("#inputAsuntoVer").show();
+                                $("#inputDescripcionVer").show();
+                                $("#inputNotasVer").show();
+                                $("#inputOwnerVer").show();
+                            }else if($("#EditarIncidencia").html()==="Modificar"){
+                                
+                                let tiquete ={
+                                    Id: contactoSeleciondoTiquete.Id,
+                                    Asunto: $("#inputAsuntoVer").val(),
+                                    Descripcion: $("#inputDescripcionVer").val(),
+                                    Notas: $("#inputNotasVer").val(),
+                                    Owner: $("#inputOwnerVer").val(),
+                                    Creador: contactoSeleciondoTiquete.Creador,
+                                    Fecha: contactoSeleciondoTiquete.Fecha
+                                }
+
+                                $("#inputAsuntoVer").hide();
+                                $("#inputDescripcionVer").hide();
+                                $("#inputNotasVer").hide();
+                                $("#inputOwnerVer").hide();
+
+                                $("#txtAsuntoVer").show();
+                                $("#txtDescripcionVer").show();
+                                $("#txtNotasVer").show();
+                                $("#txtOwnerVer").show();
+                                
+                                $("#EditarIncidencia").html("Editar Incidencia");
+
+                                await onUpdate(IdSeleccionadoTiquete,tiquete);
+                                
+                                $("#inputAsuntoVer").val("");
+                                $("#inputDescripcionVer").val("");
+                                $("#inputNotasVer").val("");
+                                $("#inputOwnerVer").val("");
+                                IdSeleccionadoTiquete = "";                            
+                            }
                         });
                     });
                 });
