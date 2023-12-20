@@ -167,9 +167,17 @@
                     <button id="cerrarModal1" type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form>
+                <form class="formEditar">
                     <div class="modal-body">
                         <div class="mb-3">
+                            <div class="editarEliminar">
+                                <button class="btn editar" type="button">
+                                    <img src="../img/icons8-editar-50.png" alt="Editar">
+                                </button>
+                                <button class="btn eliminar" type="button">
+                                    <img  src="../img/icons8-basura-50.png" alt="Eliminar">
+                                </button>
+                            </div>
                             <label for="exampleInputEmail1" class="form-label">ID Incidencia:</label>
                             <p id="txtIdVer"></p>
                         </div>
@@ -205,9 +213,7 @@
                             <label for="exampleInputPassword1" class="form-label">Hora:</label>
                             <p id="txtHoraVer"></p>
                         </div>
-                        <button id="EditarIncidencia" class="btn btn-secondary w-100" type="button">Editar Incidencia</button>
-                        <button id="EliminarIncidencia" class="btn btn-danger mt-2 w-100" type="button">Eliminar
-                            Incidencia</button>
+                        <button class="btn btn-success w-100 acceptarEditar" type="button">Aceptar</button>
                     </div>
                 </form>
             </div>
@@ -224,6 +230,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">Asunto</th>
                         <th scope="col">Descripción</th>
+                        <th scope="col">Dueño</th>
+                        <th scope="col">Creador</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Hora</th>
                     </tr>

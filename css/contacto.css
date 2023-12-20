@@ -40,3 +40,28 @@ input, textarea {
     margin-right: auto;
     width: 70%;
 }
+
+.editarEliminar{
+    height: auto;
+    width: 60px;
+    margin-left: 88%;
+    margin-bottom: -100px;
+}
+
+.editarEliminar > .editar {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.editarEliminar > .editar > img{
+    display: flex;
+    height: 10%;
+    width: 100%;
+    
+}
+
+.editarEliminar > .eliminar > img{
+    display: flex;
+    height: 80%;
+    width: 100%;
+}

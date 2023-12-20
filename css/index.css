@@ -109,8 +109,6 @@
     }
 }
 
-.footerFinal{}
-
 footer {
     background-color: rgb(252, 158, 230);
     color: #000000;
@@ -133,4 +131,31 @@ footer {
     flex-basis: 100%;
     text-align: center; /* Alinea el texto a la derecha */
 }
+
+.editarEliminar{
+    height: auto;
+    width: 60px;
+    margin-left: 88%;
+    margin-bottom: -100px;
+}
+
+.editarEliminar > .editar {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.editarEliminar > .editar > img{
+    display: flex;
+    height: 10%;
+    width: 100%;
+    
+}
+
+.editarEliminar > .eliminar > img{
+    display: flex;
+    height: 80%;
+    width: 100%;
+}
+
+
 

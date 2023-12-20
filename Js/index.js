@@ -18,7 +18,7 @@ const onInsertUser = (id,obj) => db.collection(collectionStrUsers).doc(id).set(o
 const findByIdUser = paramId => db.collection(collectionStrUsers).doc(paramId).get();
 
 const dataTable = document.querySelector("#tblDatos > tbody");
-
+var IdSeleccionadoTiquete ="";
 
 function Limpiar(){
     //Limpiar el Modal
@@ -39,6 +39,25 @@ function Limpiar(){
     $("#modalInicioSesion").modal('hide');
     $(".modal-backdrop").remove();
 };
+
+function LimpiarEditar(){
+    $("#inputAsuntoVer").hide();
+    $("#inputDescripcionVer").hide();
+    $("#inputNotasVer").hide();
+    $("#inputOwnerVer").hide();
+
+    $("#txtAsuntoVer").show();
+    $("#txtDescripcionVer").show();
+    $("#txtNotasVer").show();
+    $("#txtOwnerVer").show();
+
+    $(".acceptarEditar").hide();
+
+    $(".formEditar").trigger("reset");
+    IdSeleccionadoTiquete ="";
+    $("#modalVerIncidencia").modal('hide');
+    $(".modal-backdrop").remove();
+}
 
 $(document).ready(()=>{
     $("#cerrarModal").click(()=>{
@@ -152,6 +171,7 @@ $(document).ready(()=>{
             $(".carousel").css("display","none");
             $(".otrosArtistas").css("display","none");;
             $(".footerFinal").css("display","none");
+            $(".acceptarEditar").hide();
             
             /*Coloco el usuario en el Nav-Bar*/
             const docSeleccionado = await findByIdUser(user.uid);
@@ -186,93 +206,87 @@ $(document).ready(()=>{
                         <td><a href="#" class="link-primary ver-tiquete" data-bs-toggle="modal" data-bs-target="#modalVerIncidencia" data-id=${doc.id}>${tiquete.Id}</a></td>
                         <td>${tiquete.Asunto}</td>
                         <td>${tiquete.Descripcion}</td>
+                        <td>${tiquete.Owner}</td>
+                        <td>${tiquete.Creador}</td>
                         <td>${tiquete.Fecha.toDate().toLocaleDateString()}</td>
                         <td>${horasFormato12}:${tiquete.Fecha.toDate().getMinutes()} ${amOpm}</td>
                     </tr>
                     `;
-
-                    $(".ver-tiquete").click(async(ev)=>{
-                        //console.log(ev.target.dataset.id);
-                        const IdSeleccionadoTiquete = ev.target.dataset.id;
-                        const docSeleccionadoTiquete = await findById(IdSeleccionadoTiquete);
-                        const contactoSeleciondoTiquete = docSeleccionadoTiquete.data();
-                        //console.log(contactoSeleciondoTiquete);
-    
-                        const horas = contactoSeleciondoTiquete.Fecha.toDate().getHours();
-                        const horasFormato12 = horas % 12 || 12; 
-                        const amOpm = horas < 12 ? 'AM' : 'PM';
-                        const hora = horasFormato12+":"+ contactoSeleciondoTiquete.Fecha.toDate().getMinutes()+" "+amOpm;
-                        
-
-                        $("#txtAsuntoVer").show();
-                        $("#txtDescripcionVer").show();
-                        $("#txtNotasVer").show();
-                        $("#txtOwnerVer").show();
-
-                        $("#txtIdVer").html(contactoSeleciondoTiquete.Id);
-                        $("#txtAsuntoVer").html(contactoSeleciondoTiquete.Asunto);
-                        $("#txtDescripcionVer").html(contactoSeleciondoTiquete.Descripcion);
-                        $("#txtNotasVer").html(contactoSeleciondoTiquete.Notas);
-                        $("#txtOwnerVer").html(contactoSeleciondoTiquete.Owner);
-                        $("#txtCreadorVer").html(contactoSeleciondoTiquete.Creador);
-                        $("#txtFechaVer").html(contactoSeleciondoTiquete.Fecha.toDate().toLocaleDateString());
-                        $("#txtHoraVer").html(hora);
-    
-                        $("#EditarIncidencia").click(async()=>{
-
-                            if($("#EditarIncidencia").html()==="Editar Incidencia"){
-                                $("#EditarIncidencia").html("Modificar")
-                                $("#txtAsuntoVer").hide();
-                                $("#txtDescripcionVer").hide();
-                                $("#txtNotasVer").hide();
-                                $("#txtOwnerVer").hide();
-
-                                $("#inputAsuntoVer").val(contactoSeleciondoTiquete.Asunto);
-                                $("#inputDescripcionVer").val(contactoSeleciondoTiquete.Descripcion);
-                                $("#inputNotasVer").val(contactoSeleciondoTiquete.Notas);
-                                $("#inputOwnerVer").val(contactoSeleciondoTiquete.Owner);
-
-                                $("#inputAsuntoVer").show();
-                                $("#inputDescripcionVer").show();
-                                $("#inputNotasVer").show();
-                                $("#inputOwnerVer").show();
-                            }else if($("#EditarIncidencia").html()==="Modificar"){
-                                
-                                let tiquete ={
-                                    Id: contactoSeleciondoTiquete.Id,
-                                    Asunto: $("#inputAsuntoVer").val(),
-                                    Descripcion: $("#inputDescripcionVer").val(),
-                                    Notas: $("#inputNotasVer").val(),
-                                    Owner: $("#inputOwnerVer").val(),
-                                    Creador: contactoSeleciondoTiquete.Creador,
-                                    Fecha: contactoSeleciondoTiquete.Fecha
-                                }
-
-                                $("#inputAsuntoVer").hide();
-                                $("#inputDescripcionVer").hide();
-                                $("#inputNotasVer").hide();
-                                $("#inputOwnerVer").hide();
-
-                                $("#txtAsuntoVer").show();
-                                $("#txtDescripcionVer").show();
-                                $("#txtNotasVer").show();
-                                $("#txtOwnerVer").show();
-                                
-                                $("#EditarIncidencia").html("Editar Incidencia");
-
-                                await onUpdate(IdSeleccionadoTiquete,tiquete);
-                                
-                                $("#inputAsuntoVer").val("");
-                                $("#inputDescripcionVer").val("");
-                                $("#inputNotasVer").val("");
-                                $("#inputOwnerVer").val("");
-                                IdSeleccionadoTiquete = "";                            
-                            }
-                        });
-                    });
                 });
 
-                
+                $(".ver-tiquete").click(async(ev)=>{
+                    //console.log(ev.target.dataset.id);
+                    IdSeleccionadoTiquete = ev.target.dataset.id;
+                    const docSeleccionadoTiquete = await findById(IdSeleccionadoTiquete);
+                    const contactoSeleciondoTiquete = docSeleccionadoTiquete.data();
+                    //console.log(contactoSeleciondoTiquete);
+
+                    const horas = contactoSeleciondoTiquete.Fecha.toDate().getHours();
+                    const horasFormato12 = horas % 12 || 12; 
+                    const amOpm = horas < 12 ? 'AM' : 'PM';
+                    const hora = horasFormato12+":"+ contactoSeleciondoTiquete.Fecha.toDate().getMinutes()+" "+amOpm;
+                    
+
+                    $("#txtAsuntoVer").show();
+                    $("#txtDescripcionVer").show();
+                    $("#txtNotasVer").show();
+                    $("#txtOwnerVer").show();
+
+                    $("#txtIdVer").html(contactoSeleciondoTiquete.Id);
+                    $("#txtAsuntoVer").html(contactoSeleciondoTiquete.Asunto);
+                    $("#txtDescripcionVer").html(contactoSeleciondoTiquete.Descripcion);
+                    $("#txtNotasVer").html(contactoSeleciondoTiquete.Notas);
+                    $("#txtOwnerVer").html(contactoSeleciondoTiquete.Owner);
+                    $("#txtCreadorVer").html(contactoSeleciondoTiquete.Creador);
+                    $("#txtFechaVer").html(contactoSeleciondoTiquete.Fecha.toDate().toLocaleDateString());
+                    $("#txtHoraVer").html(hora);
+                });
+
+                $(".editar").click(async()=>{
+                        
+                    console.log(IdSeleccionadoTiquete);
+                    const docSeleccionadoTiquete = await findById(IdSeleccionadoTiquete);
+                    const contactoSeleciondoTiquete = docSeleccionadoTiquete.data();
+
+                    $("#EditarIncidencia").html("Modificar")
+                    $("#txtAsuntoVer").hide();
+                    $("#txtDescripcionVer").hide();
+                    $("#txtNotasVer").hide();
+                    $("#txtOwnerVer").hide();
+
+                    $("#inputAsuntoVer").show();
+                    $("#inputDescripcionVer").show();
+                    $("#inputNotasVer").show();
+                    $("#inputOwnerVer").show();
+
+                    $("#inputAsuntoVer").val(contactoSeleciondoTiquete.Asunto);
+                    $("#inputDescripcionVer").val(contactoSeleciondoTiquete.Descripcion);
+                    $("#inputNotasVer").val(contactoSeleciondoTiquete.Notas);
+                    $("#inputOwnerVer").val(contactoSeleciondoTiquete.Owner);
+
+                    $(".acceptarEditar").show();
+                });
+
+                $(".acceptarEditar").click(async()=>{
+                    const docSeleccionadoTiquete = await findById(IdSeleccionadoTiquete);
+                    const contactoSeleciondoTiquete = docSeleccionadoTiquete.data();
+                    let tiquete ={
+                        Id: contactoSeleciondoTiquete.Id,
+                        Asunto: $("#inputAsuntoVer").val(),
+                        Descripcion: $("#inputDescripcionVer").val(),
+                        Notas: $("#inputNotasVer").val(),
+                        Owner: $("#inputOwnerVer").val(),
+                        Creador: contactoSeleciondoTiquete.Creador,
+                        Fecha: contactoSeleciondoTiquete.Fecha
+                    }
+
+                    await onUpdate(IdSeleccionadoTiquete,tiquete); 
+                    LimpiarEditar();
+                });
+
+                $(".btn-close").click(()=>{
+                    LimpiarEditar();
+                });
             });
         }else{
             //console.log("Sing-Out");
