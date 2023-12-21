@@ -129,6 +129,7 @@ async function getCurrentUserName() {
     }
 }
 
+/*Funcion para Contactenos*/
 function sendToWhatsapp(){
     let number="+50685019391";
     let name = document.getElementById('name').value;
