@@ -356,7 +356,6 @@ $(document).ready(()=>{
             $(".imgGoogle1").attr("src","")
         }
 
-       
 
                 // Manejar el evento de envío del formulario de creación de incidencias
                 formularioCrearIncidencia.addEventListener("submit", async (event) => {
@@ -406,12 +405,13 @@ $(document).ready(()=>{
                     try {
                         // Insertar incidencia en la base de datos
                         await onInsert(nuevaIncidencia);
-
+                        
                         // Limpiar el formulario después de la inserción
                         formularioCrearIncidencia.reset();
 
                         // Cerrar el modal de creación de incidencias
                         $("#modalCrearIncidencia").modal("hide");
+                        $(".modal-backdrop").remove();
                     } catch (error) {
                         console.error("Error al insertar la incidencia:", error);
                         // Manejar el error según sea necesario
@@ -438,9 +438,11 @@ $(document).ready(()=>{
                             console.log("Incidencia eliminada con éxito");
                         }
 
+                        
+                        $("#modalEliminarIncidencia").modal("hide");
+                        $(".modal-backdrop").remove();
                         // Limpiar y cerrar el modal de eliminación
                         LimpiarEditar();
-                        $("#modalEliminarIncidencia").modal("hide");
                     } catch (error) {
                         console.error("Error al eliminar la incidencia:", error);
                         
