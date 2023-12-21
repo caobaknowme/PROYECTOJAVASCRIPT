@@ -222,22 +222,111 @@
             </div>
         </div>
 
+        <!--Modal para crear incidencia-->
+        <div id="modalCrearIncidencia" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Crear Incidencia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="frmCrearIncidencia">
+                        <div class="modal-body">
+                            <!-- Nuevos campos para la creación de incidencia -->
+                            <div class="mb-3">
+                                <label for="exampleInputAsunto" class="form-label">Asunto</label>
+                                <input type="text" class="form-control" id="txtAsunto" placeholder="Asunto" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputDescripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="txtDescripcion" placeholder="Descripción"
+                                    required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputCategoria" class="form-label">Categoría</label>
+                                <select class="form-select" id="txtCategoria" required>
+                                    <option value="software">Software</option>
+                                    <option value="confrontamiento">Confrontamiento</option>
+                                    <option value="hardware">Hardware</option>
+                                    <option value="escenario">Escenario</option>
+                                    <option value="foodcourt">FoodCourt</option>
+                                    <option value="entrada">Entrada</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPrioridad" class="form-label">Prioridad</label>
+                                <select class="form-select" id="selPrioridad" required>
+                                    <option value="alta">Alta</option>
+                                    <option value="media">Media</option>
+                                    <option value="baja">Baja</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEstado" class="form-label">Estado</label>
+                                <select class="form-select" id="selEstado" required>
+                                    <option value="abierto">Abierto</option>
+                                    <option value="en_proceso">En Proceso</option>
+                                    <option value="cerrado">Cerrado</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputAsignadoA" class="form-label">Asignado a</label>
+                                <input type="text" class="form-control" id="txtAsignadoA" placeholder="Asignado a"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputNotas" class="form-label">Notas</label>
+                                <textarea class="form-control" id="txtNotas" placeholder="Notas"></textarea>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Crear Incidencia</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de eliminar Incidencia -->
+        <div class="modal fade" id="modalEliminarIncidencia" tabindex="-1"
+            aria-labelledby="modalEliminarIncidenciaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEliminarIncidenciaLabel">Confirmar Eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de que quieres eliminar esta incidencia?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <!--Formulario HTML-->
             <form id="Formulario" class="Formulario">
                 <h3>¿Quines saber más sobre nosotros?</h3>
                 <p>¡No dudes en contactarnos!</p>
                 <label for="nombre">Nombre del Emisor</label>
-                <input type="text" id="name" placeholder="Nombre Completo" name="name" required >
+                <input type="text" id="name" placeholder="Nombre Completo" name="name" required>
                 <label for="correo">Correo Electrónico</label>
-                <input type="email" id="email" placeholder="Correo Electrónico"  name="email" required>
+                <input type="email" id="email" placeholder="Correo Electrónico" name="email" required>
                 <label for="">Descripción</label>
                 <textarea id="message" placeholder="Mensaje" name="message" cols="30" rows="10" required></textarea>
-                <button onclick="sendToWhatsapp()" type="submit">Enviar Mensaje<i class="fa-solid fa-paper-plane"></i><span class="overlay"></span></button>
+                <button onclick="sendToWhatsapp()" type="submit">Enviar Mensaje<i
+                        class="fa-solid fa-paper-plane"></i><span class="overlay"></span></button>
             </form>
 
             <div class="usuarios" style="display: none;">
-                <button type="button" class="btn btn-dark mt-5">Crear Incidencia</button>
+                <button type="button" class="btn btn-dark mt-5" data-bs-toggle="modal"
+                data-bs-target="#modalCrearIncidencia">Crear Incidencia</button>
                 <table id="tblDatos" class="table table-striped mt-5">
                     <thead>
                         <tr>
