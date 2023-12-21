@@ -40,7 +40,8 @@
                             <a class="nav-link mostrarActivo" href="../html/contacto.html">Contactenos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mostrarActivo cerrarS cSession" href="../html/index.html">Cerrar Sesión</a>
+                            <a class="nav-link mostrarActivo cerrarS cSession" href="../html/index.html">Cerrar
+                                Sesión</a>
                         </li>
                     </ul>
                     <form class="d-flex">
@@ -55,7 +56,7 @@
                                 <div class="imgprincipal">
                                     <div class="btn cerrarSession cerrarS" type="button">
                                         <img src="../img/icons8-salir-24.png" alt="Cerrar Sesión">
-                                        <p id="cerrarSession" >Cerrar Sesión</p>
+                                        <p id="cerrarSession">Cerrar Sesión</p>
                                     </div>
                                 </div>
 
@@ -175,42 +176,67 @@
                                     <img src="../img/icons8-editar-50.png" alt="Editar">
                                 </button>
                                 <button class="btn eliminar" type="button">
-                                    <img  src="../img/icons8-basura-50.png" alt="Eliminar">
+                                    <img src="../img/icons8-basura-50.png" alt="Eliminar">
                                 </button>
                             </div>
                             <label for="exampleInputEmail1" class="form-label">ID Incidencia:</label>
                             <p id="txtIdVer"></p>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Asunto:</label>
+                            <label class="form-label">Asunto:</label>
                             <p id="txtAsuntoVer"></p>
                             <input id="inputAsuntoVer" type="text" class="form-control" style="display: none;">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Descripción:</label>
+                            <label class="form-label">Descripción:</label>
                             <p id="txtDescripcionVer"></p>
                             <input id="inputDescripcionVer" type="text" class="form-control" style="display: none;">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Notas:</label>
+                            <label class="form-label">Notas:</label>
                             <p id="txtNotasVer"></p>
                             <input id="inputNotasVer" type="text" class="form-control" style="display: none;">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Dueño:</label>
-                            <p id="txtOwnerVer"></p>
-                            <input id="inputOwnerVer" type="text" class="form-control" style="display: none;">
+                            <label  class="form-label">Categoría:</label>
+                            <p id="txtCategoriaVer"></p>
+                            <select class="form-select" id="inputCategoriaVer" style="display: none;">
+                                <option value="software">Software</option>
+                                <option value="confrontamiento">Confrontamiento</option>
+                                <option value="hardware">Hardware</option>
+                                <option value="escenario">Escenario</option>
+                                <option value="foodcourt">FoodCourt</option>
+                                <option value="entrada">Entrada</option>
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Creador:</label>
+                            <label  class="form-label">Prioridad:</label>
+                            <p id="txtPrioridadVer"></p>
+                            <select class="form-select" id="inputPrioridadVer" style="display: none;">
+                                <option value="alta">Alta</option>
+                                <option value="media">Media</option>
+                                <option value="baja">Baja</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Estado:</label>
+                            <p id="txtEstadoVer"></p>
+                            <select class="form-select" id="inputEstadoVer" style="display: none;">
+                                <option value="abierto">Abierto</option>
+                                <option value="en_proceso">En Proceso</option>
+                                <option value="cerrado">Cerrado</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Creador:</label>
                             <p id="txtCreadorVer"></p>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Fecha:</label>
+                            <label  class="form-label">Fecha:</label>
                             <p id="txtFechaVer"></p>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Hora:</label>
+                            <label class="form-label">Hora:</label>
                             <p id="txtHoraVer"></p>
                         </div>
                         <button class="btn btn-success w-100 acceptarEditar" type="button">Aceptar</button>
@@ -221,97 +247,100 @@
     </div>
 
 
- <!--Modal para crear incidencia-->
- <div id="modalCrearIncidencia" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Crear Incidencia</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!--Modal para crear incidencia-->
+    <div id="modalCrearIncidencia" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Crear Incidencia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frmCrearIncidencia">
+                    <div class="modal-body">
+                        <!-- Nuevos campos para la creación de incidencia -->
+                        <div class="mb-3">
+                            <label for="exampleInputAsunto" class="form-label">Asunto</label>
+                            <input type="text" class="form-control" id="txtAsunto" placeholder="Asunto" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputDescripcion" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="txtDescripcion" placeholder="Descripción"
+                                required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputCategoria" class="form-label">Categoría</label>
+                            <select class="form-select" id="txtCategoria" required>
+                                <option value="software">Software</option>
+                                <option value="confrontamiento">Confrontamiento</option>
+                                <option value="hardware">Hardware</option>
+                                <option value="escenario">Escenario</option>
+                                <option value="foodcourt">FoodCourt</option>
+                                <option value="entrada">Entrada</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPrioridad" class="form-label">Prioridad</label>
+                            <select class="form-select" id="selPrioridad" required>
+                                <option value="alta">Alta</option>
+                                <option value="media">Media</option>
+                                <option value="baja">Baja</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEstado" class="form-label">Estado</label>
+                            <select class="form-select" id="selEstado" required>
+                                <option value="abierto">Abierto</option>
+                                <option value="en_proceso">En Proceso</option>
+                                <option value="cerrado">Cerrado</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputAsignadoA" class="form-label">Asignado a</label>
+                            <input type="text" class="form-control" id="txtAsignadoA" placeholder="Asignado a" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputNotas" class="form-label">Notas</label>
+                            <textarea class="form-control" id="txtNotas" placeholder="Notas"></textarea>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Crear Incidencia</button>
+                    </div>
+                </form>
             </div>
-            <form id="frmCrearIncidencia">
+        </div>
+    </div>
+
+    <!-- Modal de eliminar Incidencia -->
+    <div class="modal fade" id="modalEliminarIncidencia" tabindex="-1" aria-labelledby="modalEliminarIncidenciaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEliminarIncidenciaLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
                 <div class="modal-body">
-                    <!-- Nuevos campos para la creación de incidencia -->
-                    <div class="mb-3">
-                        <label for="exampleInputAsunto" class="form-label">Asunto</label>
-                        <input type="text" class="form-control" id="txtAsunto" placeholder="Asunto" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputDescripcion" class="form-label">Descripción</label>
-                        <textarea class="form-control" id="txtDescripcion" placeholder="Descripción" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputCategoria" class="form-label">Categoría</label>
-                        <select class="form-select" id="txtCategoria" required>
-                            <option value="software">Software</option>
-                            <option value="confrontamiento">Confrontamiento</option>
-                            <option value="hardware">Hardware</option>
-                            <option value="escenario">Escenario</option>
-                            <option value="foodcourt">FoodCourt</option>
-                            <option value="entrada">Entrada</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPrioridad" class="form-label">Prioridad</label>
-                        <select class="form-select" id="selPrioridad" required>
-                            <option value="alta">Alta</option>
-                            <option value="media">Media</option>
-                            <option value="baja">Baja</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEstado" class="form-label">Estado</label>
-                        <select class="form-select" id="selEstado" required>
-                            <option value="abierto">Abierto</option>
-                            <option value="en_proceso">En Proceso</option>
-                            <option value="cerrado">Cerrado</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputAsignadoA" class="form-label">Asignado a</label>
-                        <input type="text" class="form-control" id="txtAsignadoA" placeholder="Asignado a" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputNotas" class="form-label">Notas</label>
-                        <textarea class="form-control" id="txtNotas" placeholder="Notas"></textarea>
-                    </div>
-
-
+                    <p>¿Estás seguro de que quieres eliminar esta incidencia?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Crear Incidencia</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">Eliminar</button>
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de eliminar Incidencia -->
-<div class="modal fade" id="modalEliminarIncidencia" tabindex="-1" aria-labelledby="modalEliminarIncidenciaLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalEliminarIncidenciaLabel">Confirmar Eliminación</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <p>¿Estás seguro de que quieres eliminar esta incidencia?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">Eliminar</button>
             </div>
         </div>
     </div>
-</div>
 
 
     <div class="container">
         <!--Tabla de datos-->
         <div class="usuarios" style="display: none;">
             <!-- Botón para abrir el formulario de creación de incidencia -->
-        <button type="button" class="btn btn-dark mt-5" data-bs-toggle="modal" data-bs-target="#modalCrearIncidencia">Crear Incidencia</button>
-            
+            <button type="button" class="btn btn-dark mt-5" data-bs-toggle="modal"
+                data-bs-target="#modalCrearIncidencia">Crear Incidencia</button>
+
             <table id="tblDatos" class="table table-striped mt-5">
                 <thead>
                     <tr>

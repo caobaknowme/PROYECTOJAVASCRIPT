@@ -46,19 +46,20 @@ function LimpiarEditar(){
     $("#inputAsuntoVer").hide();
     $("#inputDescripcionVer").hide();
     $("#inputNotasVer").hide();
-    $("#inputOwnerVer").hide();
+    $("#inputCategoriaVer").hide();
+    $("#inputPrioridadVer").hide();
+    $("#inputEstadoVer").hide();
 
     $("#txtAsuntoVer").show();
     $("#txtDescripcionVer").show();
     $("#txtNotasVer").show();
-    $("#txtOwnerVer").show();
+    $("#txtCategoriaVer").show();
+    $("#txtPrioridadVer").show();
+    $("#txtEstadoVer").show();
 
     $(".acceptarEditar").hide();
 
     $(".formEditar").trigger("reset");
-    IdSeleccionadoTiquete ="";
-    $("#modalVerIncidencia").modal('hide');
-    $(".modal-backdrop").remove();
 }
 
 // Variable global para almacenar el contador de IDs
@@ -312,7 +313,9 @@ $(document).ready(()=>{
                     $("#txtAsuntoVer").html(contactoSeleciondoTiquete.Asunto);
                     $("#txtDescripcionVer").html(contactoSeleciondoTiquete.Descripcion);
                     $("#txtNotasVer").html(contactoSeleciondoTiquete.Notas);
-                    $("#txtOwnerVer").html(contactoSeleciondoTiquete.Owner);
+                    $("#txtCategoriaVer").html(contactoSeleciondoTiquete.Categoria);
+                    $("#txtPrioridadVer").html(contactoSeleciondoTiquete.Prioridad);
+                    $("#txtEstadoVer").html(contactoSeleciondoTiquete.Estado);
                     $("#txtCreadorVer").html(contactoSeleciondoTiquete.Creador);
                     $("#txtFechaVer").html(contactoSeleciondoTiquete.Fecha.toDate().toLocaleDateString());
                     $("#txtHoraVer").html(hora);
@@ -331,17 +334,23 @@ $(document).ready(()=>{
                     $("#txtAsuntoVer").hide();
                     $("#txtDescripcionVer").hide();
                     $("#txtNotasVer").hide();
-                    $("#txtOwnerVer").hide();
+                    $("#txtCategoriaVer").hide();
+                    $("#txtPrioridadVer").hide();
+                    $("#txtEstadoVer").hide();
 
                     $("#inputAsuntoVer").show();
                     $("#inputDescripcionVer").show();
                     $("#inputNotasVer").show();
-                    $("#inputOwnerVer").show();
+                    $("#inputCategoriaVer").show();
+                    $("#inputPrioridadVer").show();
+                    $("#inputEstadoVer").show();
 
                     $("#inputAsuntoVer").val(contactoSeleciondoTiquete.Asunto);
                     $("#inputDescripcionVer").val(contactoSeleciondoTiquete.Descripcion);
                     $("#inputNotasVer").val(contactoSeleciondoTiquete.Notas);
-                    $("#inputOwnerVer").val(contactoSeleciondoTiquete.Owner);
+                    $("#inputCategoriaVer").val(contactoSeleciondoTiquete.Categoria);
+                    $("#inputPrioridadVer").val(contactoSeleciondoTiquete.Prioridad);
+                    $("#inputEstadoVer").val(contactoSeleciondoTiquete.Estado);
 
                     $(".acceptarEditar").show();
                 });
@@ -354,16 +363,24 @@ $(document).ready(()=>{
                         Asunto: $("#inputAsuntoVer").val(),
                         Descripcion: $("#inputDescripcionVer").val(),
                         Notas: $("#inputNotasVer").val(),
-                        Owner: $("#inputOwnerVer").val(),
+                        Categoria: $("#inputCategoriaVer").val(),
+                        Prioridad: $("#inputPrioridadVer").val(),
+                        Estado: $("#inputEstadoVer").val(),
                         Creador: contactoSeleciondoTiquete.Creador,
                         Fecha: contactoSeleciondoTiquete.Fecha
                     }
 
-                    await onUpdate(IdSeleccionadoTiquete,tiquete); 
+                    await onUpdate(IdSeleccionadoTiquete,tiquete);
+                    $("#modalVerIncidencia").modal('hide');
+                    $(".modal-backdrop").remove();
+                    IdSeleccionadoTiquete =""; 
                     LimpiarEditar();
                 });
 
                 $(".btn-close").click(()=>{
+                    $("#modalVerIncidencia").modal('hide');
+                    $(".modal-backdrop").remove();
+                    IdSeleccionadoTiquete =""; 
                     LimpiarEditar();
                 });
             });
@@ -469,10 +486,10 @@ $(document).ready(()=>{
                             await onDelete(IdSeleccionadoTiquete);
                             console.log("Incidencia eliminada con éxito");
                         }
-
-                        
                         $("#modalEliminarIncidencia").modal("hide");
+                        $("#modalVerIncidencia").modal('hide');
                         $(".modal-backdrop").remove();
+                        IdSeleccionadoTiquete =""; 
                         // Limpiar y cerrar el modal de eliminación
                         LimpiarEditar();
                     } catch (error) {
