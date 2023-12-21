@@ -82,7 +82,7 @@ async function getCurrentUserName() {
                 if (userData && userData.nombre) {
                     return userData.nombre;
                 } else {
-                   
+                
                     return "Campo no encontrado";
                 }
             } else {
