@@ -7,7 +7,7 @@ const db = firebase.firestore();
 const collectionStr = "tiquetes";
 
 /*4.CARGAR LAS FUNCIONES DE FIREBASE*/
-const onFindAll = callback => db.collection(collectionStr).onSnapshot(callback);
+const onFindAll = callback => db.collection(collectionStr).orderBy('Id', 'desc').onSnapshot(callback);
 const onInsert = obj => db.collection(collectionStr).doc().set(obj);
 const onUpdate = (paramId,newObj) => db.collection(collectionStr).doc(paramId).update(newObj);
 const onDelete = paramId => db.collection(collectionStr).doc(paramId).delete();
@@ -61,9 +61,37 @@ function LimpiarEditar(){
     $(".modal-backdrop").remove();
 }
 
-// Función para generar identificadores únicos
-function generateUniqueId() {
-    return '_' + Math.random().toString(36).substr(2, 9);
+// Variable global para almacenar el contador de IDs
+let idCounter = 1;
+
+// Función para generar identificadores únicos y consecutivos
+async function generateUniqueId() {
+    let isUnique = false;
+    let newId = '';
+
+    while (!isUnique) {
+       
+        newId = String(idCounter).padStart(4, '0');
+
+        // Verificar si el ID ya existe en la base de datos
+        const idExists = await checkIfIdExists(newId);
+
+        // Incrementar el contador para el próximo intento
+        idCounter++;
+
+        // Si el ID no existe en la base de datos, marcar como único y salir del bucle
+        if (!idExists) {
+            isUnique = true;
+        }
+    }
+
+    return newId;
+}
+
+// Función para verificar si un ID ya existe en la base de datos
+async function checkIfIdExists(id) {
+    const snapshot = await db.collection(collectionStr).where('Id', '==', id).get();
+    return !snapshot.empty;
 }
 
 async function getCurrentUserName() {
@@ -251,7 +279,10 @@ $(document).ready(()=>{
                         <td><a href="#" class="link-primary ver-tiquete" data-bs-toggle="modal" data-bs-target="#modalVerIncidencia" data-id=${doc.id}>${tiquete.Id}</a></td>
                         <td>${tiquete.Asunto}</td>
                         <td>${tiquete.Descripcion}</td>
-                        <td>${tiquete.Owner}</td>
+                        <td>${tiquete.Categoria}</td>
+                        <td>${tiquete.Prioridad}</td>
+                        <td>${tiquete.Estado}</td>
+                        <td>${tiquete.AsignadoA}</td>
                         <td>${tiquete.Creador}</td>
                         <td>${tiquete.Fecha.toDate().toLocaleDateString()}</td>
                         <td>${horasFormato12}:${tiquete.Fecha.toDate().getMinutes()} ${amOpm}</td>
@@ -383,7 +414,8 @@ $(document).ready(()=>{
                     const amOpm = horas < 12 ? 'AM' : 'PM';
                     const hora = `${horasFormato12}:${fecha.getMinutes()} ${amOpm}`;
 
-                    const id = generateUniqueId(); // Generar un ID único
+                    const id = await generateUniqueId(); // Generar un ID único y consecutivo
+
                     const creador = await getCurrentUserName(); 
 
                     const nuevaIncidencia = {
