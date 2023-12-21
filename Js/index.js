@@ -18,7 +18,9 @@ const onInsertUser = (id,obj) => db.collection(collectionStrUsers).doc(id).set(o
 const findByIdUser = paramId => db.collection(collectionStrUsers).doc(paramId).get();
 
 const dataTable = document.querySelector("#tblDatos > tbody");
-var IdSeleccionadoTiquete ="";
+var IdSeleccionadoTiquete = "";
+var formularioCrearIncidencia;
+
 
 function Limpiar(){
     //Limpiar el Modal
@@ -59,7 +61,50 @@ function LimpiarEditar(){
     $(".modal-backdrop").remove();
 }
 
+// Función para generar identificadores únicos
+function generateUniqueId() {
+    return '_' + Math.random().toString(36).substr(2, 9);
+}
+
+async function getCurrentUserName() {
+    // Obtener el usuario actual
+    const user = auth.currentUser;
+
+    if (user) {
+        try {
+            // Realizar una consulta a la colección "Usuarios"
+            const userDoc = await db.collection("Usuarios").doc(user.uid).get();
+
+            // Verificar si el documento existe y si hay un campo "nombre"
+            if (userDoc.exists) {
+                const userData = userDoc.data();
+
+                if (userData && userData.nombre) {
+                    return userData.nombre;
+                } else {
+                   
+                    return "Campo no encontrado";
+                }
+            } else {
+                
+                return "NombreUsuarioDefault";
+            }
+        } catch (error) {
+            console.error("Error al obtener el nombre del usuario:", error);
+            
+            return "NombreUsuarioDefault";
+        }
+    } else {
+        
+        return "NombreUsuarioDefault";
+    }
+}
+
 $(document).ready(()=>{
+
+    formularioCrearIncidencia = document.getElementById("frmCrearIncidencia");
+
+
     $("#cerrarModal").click(()=>{
         Limpiar();
     });
@@ -160,7 +205,7 @@ $(document).ready(()=>{
         if(user){
             $(".usuarios").show("");
             //console.log("Sign-In");
-            /*Oculto los botones y muestro el cerra sesión*/
+            /*Oculto los botones y muestro el cerrar sesión*/
             $("#InicioSesion").hide();
             $("#Registro").hide();
             $("#InicioSesion1").hide();
@@ -242,6 +287,9 @@ $(document).ready(()=>{
                     $("#txtHoraVer").html(hora);
                 });
 
+
+
+                
                 $(".editar").click(async()=>{
                         
                     console.log(IdSeleccionadoTiquete);
@@ -307,12 +355,102 @@ $(document).ready(()=>{
             $(".imgGoogle").attr("src","")
             $(".imgGoogle1").attr("src","")
         }
+
+       
+
+                // Manejar el evento de envío del formulario de creación de incidencias
+                formularioCrearIncidencia.addEventListener("submit", async (event) => {
+                    event.preventDefault();
+
+                    // Obtener valores del formulario
+                    const asunto = document.getElementById("txtAsunto").value;
+                    const descripcion = document.getElementById("txtDescripcion").value;
+                    const categoria = document.getElementById("txtCategoria").value;
+                    const prioridad = document.getElementById("selPrioridad").value;
+                    const estado = document.getElementById("selEstado").value;
+                    const asignadoA = document.getElementById("txtAsignadoA").value;
+                    const notas = document.getElementById("txtNotas").value;
+
+                    // Validar que se hayan proporcionado los datos necesarios
+                    if (!asunto || !descripcion || !categoria || !prioridad || !estado || !asignadoA) {
+                        // Mostrar mensaje de error o realizar alguna acción
+                        return;
+                    }
+
+                    // Crear objeto de incidencia con los nuevos campos
+                    const fecha = new Date(); // Obtener la fecha actual
+                    const horas = fecha.getHours();
+                    const horasFormato12 = horas % 12 || 12;
+                    const amOpm = horas < 12 ? 'AM' : 'PM';
+                    const hora = `${horasFormato12}:${fecha.getMinutes()} ${amOpm}`;
+
+                    const id = generateUniqueId(); // Generar un ID único
+                    const creador = await getCurrentUserName(); 
+
+                    const nuevaIncidencia = {
+                        Id: id,
+                        Asunto: asunto,
+                        Descripcion: descripcion,
+                        Categoria: categoria,
+                        Prioridad: prioridad,
+                        Estado: estado,
+                        AsignadoA: asignadoA,
+                        Notas: notas,
+                        Creador: creador,
+                        Dueño: creador, //creador es igual a dueño
+                        Fecha: fecha,
+                        Hora: hora
+                        
+                    };
+
+                    try {
+                        // Insertar incidencia en la base de datos
+                        await onInsert(nuevaIncidencia);
+
+                        // Limpiar el formulario después de la inserción
+                        formularioCrearIncidencia.reset();
+
+                        // Cerrar el modal de creación de incidencias
+                        $("#modalCrearIncidencia").modal("hide");
+                    } catch (error) {
+                        console.error("Error al insertar la incidencia:", error);
+                        // Manejar el error según sea necesario
+                    }
+                });
+
+
+                    
+                        // Evento para eliminar incidencia
+                $(".eliminar").click(() => {
+                    // Verificar si hay una incidencia seleccionada
+                    if (IdSeleccionadoTiquete) {
+                        // Mostrar el modal de confirmación de eliminación
+                        $("#modalEliminarIncidencia").modal("show");
+                    }
+                });
+
+                // Evento para confirmar la eliminación de la incidencia
+                $("#btnConfirmarEliminar").click(async () => {
+                    try {
+                        if (IdSeleccionadoTiquete) {
+                            // Llamar a la función de eliminación
+                            await onDelete(IdSeleccionadoTiquete);
+                            console.log("Incidencia eliminada con éxito");
+                        }
+
+                        // Limpiar y cerrar el modal de eliminación
+                        LimpiarEditar();
+                        $("#modalEliminarIncidencia").modal("hide");
+                    } catch (error) {
+                        console.error("Error al eliminar la incidencia:", error);
+                        
+                    }
+                });
+
+        
+                });
+
     });
-
-    
-    
-
-});
 
 
 
