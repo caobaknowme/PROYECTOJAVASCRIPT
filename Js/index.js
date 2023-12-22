@@ -71,7 +71,7 @@ async function generateUniqueId() {
     let newId = '';
 
     while (!isUnique) {
-       
+
         newId = String(idCounter).padStart(4, '0');
 
         // Verificar si el ID ya existe en la base de datos
