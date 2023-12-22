@@ -40,6 +40,9 @@
                             <a class="nav-link mostrarActivo" href="../html/contacto.html">Contactenos</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link mostrarActivo" href="../html/Proyecto.html">Acerca de</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link mostrarActivo cerrarS cSession" href="../html/index.html">Cerrar
                                 Sesión</a>
                         </li>
@@ -148,6 +151,9 @@
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="txtPassword1" required>
+                            <div class="olvido">
+                                <a href="#" >¿Olvidó su contraseña?</a>
+                            </div>
                         </div>
                         <button id="aceptarModalInicioSesion" type="submit" class="btn btn-primary w-100 mb-2">Iniciar
                             Sesión</button>
@@ -340,24 +346,32 @@
             <!-- Botón para abrir el formulario de creación de incidencia -->
             <button type="button" class="btn btn-dark mt-5" data-bs-toggle="modal"
                 data-bs-target="#modalCrearIncidencia">Crear Incidencia</button>
-
-            <table id="tblDatos" class="table table-striped mt-5">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Asunto</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Categoría</th>
-                        <th scope="col">Prioridad</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Asignado a</th>
-                        <th scope="col">Creador</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Hora</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div class="buscar">
+                <button type="button" class="btn btnbuscar">
+                    <img src="../img/icons8-lupa-50.png" alt="Lupa Buscar">
+                </button>
+                <input type="text" id="inputbuscar">
+                <button type="button" class="btn btnbuscar1">Buscar</button>
+            </div>
+            <div class="">
+                <table id="tblDatos" class="table table-striped mt-5">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Asunto</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Prioridad</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Asignado a</th>
+                            <th scope="col">Creador</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
 
         <!--Carrosell-->

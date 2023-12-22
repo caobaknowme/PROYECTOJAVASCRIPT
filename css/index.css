@@ -41,6 +41,7 @@
     margin-bottom: 50px;
 }
 
+
 @media (min-width: 1700px){
     .textImg{
         margin-top: 35%;
@@ -91,6 +92,17 @@
         height: 100%;
         width: 100%;
     }
+
+    th, td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    th:first-child, td:first-child {
+        border-top: 1px solid #ddd;
+    }
+    
 }
 
 @media (max-width: 576px){
@@ -129,7 +141,7 @@ footer {
 .copyright {
     margin-top: 20px;
     flex-basis: 100%;
-    text-align: center; /* Alinea el texto a la derecha */
+    text-align: center; 
 }
 
 .editarEliminar{
@@ -155,6 +167,46 @@ footer {
     display: flex;
     height: 80%;
     width: 100%;
+}
+
+.buscar{
+    float: right;
+    height: auto;
+    align-items: right;
+    margin-top: 43px;
+    margin-right: 0;
+    display: flex; 
+    align-items: center; 
+
+}
+
+.buscar > .btnbuscar > img{
+    width: 70%;
+}
+
+#inputbuscar{
+    width: 55%;
+    height: auto;
+    border-radius: 100px;
+    padding-top: 0;
+    margin-right: 5px;
+}
+
+.btnbuscar1{
+    cursor: pointer;
+    border: 1px solid  rgb(252, 158, 230);
+    background-color: transparent;
+    height: auto;
+    width: 20%;
+    color:  rgb(0, 0, 0);
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    margin-top: -5px;
+}
+
+.btnbuscar1:hover{
+    color:  rgb(0, 0, 0);
+    border: 1px solid  rgb(252, 158, 230);
+    background-color:  rgb(248, 235, 245);
 }
 
 

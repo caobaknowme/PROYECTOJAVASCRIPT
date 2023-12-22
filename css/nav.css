@@ -75,6 +75,10 @@
     border: solid black 1px;
 }
 
+.olvido{
+    margin-top: 10px;
+}
+
 
 /* Media query para dispositivos móviles */
 @media (max-width: 992px) {

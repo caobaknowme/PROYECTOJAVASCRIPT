@@ -131,7 +131,7 @@ async function getCurrentUserName() {
 
 /*Funcion para Contactenos*/
 function sendToWhatsapp(){
-    let number="+50685019391";
+    let number="+50689604961";
     let name = document.getElementById('name').value;
 	let email = document.getElementById('email').value;
 	let message = document.getElementById('message').value;
@@ -159,6 +159,14 @@ $(document).ready(()=>{
 
     $("#buttonHamburgerMenu").click(()=>{
         $("#navbarSupportedContent").toggle("slow");
+    });
+
+    $("#inputbuscar").hide();
+    $(".btnbuscar1").hide();
+
+    $(".btnbuscar").click(()=>{
+        $("#inputbuscar").toggle("slow");
+        $(".btnbuscar1").toggle("slow");
     });
 
     $("#aceptarModalRegistro").click((event)=>{

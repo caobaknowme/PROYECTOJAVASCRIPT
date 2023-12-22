@@ -1,0 +1,74 @@
+.main{
+    padding: 0;
+    margin: 0;
+}
+
+.portada{
+    align-items: center;
+    text-align: center;
+}
+
+.portada > .textos{
+    margin-bottom: 5%;
+}
+
+.portada > .textos > .texto1{
+    margin-top: 5%;
+}
+.portada > img{
+    height: auto;
+    width: 60%;
+}
+
+.container > p{
+    text-align: justify;
+}
+
+.container > .introduccion > p:last-of-type{
+    margin-bottom: 30px;
+}
+
+.requerimientos > h3{
+    margin: 20px 0 20px 0;
+}
+
+.requerimientos > p{
+    text-align: justify;
+}
+
+.logica{
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logica > img{
+    height: auto;
+    width: 100%;
+}
+
+.fisica{
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.fisica > img{
+    height: auto;
+    width: 100%;
+}
+
+.correo{
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.correo > img{
+    height: auto;
+    width: 100%;
+}
+
+.conclucion> p:last-of-type{
+    margin-bottom: 30px;
+}
